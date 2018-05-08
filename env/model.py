@@ -141,8 +141,8 @@ class Model(Vision):
         self.updatesim(timestep)
         self.t += 1
 
-        flag = max([r.IsBusy for r in self.robotindex.values()]) \
-               or max([p.havecar for p in self.parkingindex.values()])
+        flag = any([r.IsBusy for r in self.robotindex.values()]) \
+               or any([p.havecar for p in self.parkingindex.values()])
         self.simustop = not flag
 
     def reset(self):
